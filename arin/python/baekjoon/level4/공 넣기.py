@@ -1,4 +1,4 @@
-# 공 넣기
+# 공 넣기 10810
 
 N, M = map(int, input().split())
 box = [0] * N
