@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 
-public class solution1 {
+public class solve1 {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
