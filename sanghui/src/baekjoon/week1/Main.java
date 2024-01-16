@@ -2,30 +2,59 @@ package baekjoon.week1;
 
 import java.util.*;
 
+import static java.lang.Math.abs;
+
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
         int N = input.nextInt();
 
-        Queue<Integer> queue = new LinkedList<>();
-        for(int i=1;i<N+1;i++) //큐에 원소 삽입
+
+        PriorityQueue<Integer> priorityQueue1 = new PriorityQueue<>(); //양수 담음
+        PriorityQueue<Integer> priorityQueue2 = new PriorityQueue<>(Collections.reverseOrder()); //음수 담음
+
+
+
+        for(int i=0;i<N;i++)
         {
-            queue.add(i);
+           int num = input.nextInt();
+
+
+
+           if(num == 0)
+           {
+               if(priorityQueue1.peek() == null && priorityQueue2.peek()==null)
+               {
+                   System.out.println(0);
+               } else if (priorityQueue1.peek() != null && priorityQueue2.peek() == null) {
+                   System.out.println(priorityQueue1.poll());
+               } else if (priorityQueue2.peek() != null && priorityQueue1.peek() == null) {
+                   System.out.println(priorityQueue2.poll());
+               } else if (priorityQueue1.peek() == abs(priorityQueue2.peek())) {
+                   System.out.println(priorityQueue2.poll());
+               } else if (priorityQueue1.peek()>abs(priorityQueue2.peek())) {
+                   System.out.println(priorityQueue2.poll());
+               }
+               else {
+                   System.out.println(priorityQueue1.poll());
+               }
+
+           }
+
+           if(num <0)
+           {
+               priorityQueue2.add(num);
+           }
+
+           if(num>0)
+           {
+               priorityQueue1.add(num);
+           }
+
         }
-
-       while(queue.size()>1)
-       {
-               queue.poll();//버리고
-
-               queue.add(queue.poll());//맨 밑으로 넣는 작업
-
-       }
-
-        System.out.println(queue.poll());
 
 
     }
 }
 
-//스택으로 구현해서 add 메소드 쓰는 경우: 맨 밑에 넣는 작업 자체가 스택에서 매우 비효율적 따라서 큐 사용
