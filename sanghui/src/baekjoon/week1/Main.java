@@ -10,50 +10,36 @@ public class Main {
 
         int N = input.nextInt();
 
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>((o1, o2) -> {
+            int a = abs(o1);
+            int b = abs(o2);
 
-        PriorityQueue<Integer> priorityQueue1 = new PriorityQueue<>(); //양수 담음
-        PriorityQueue<Integer> priorityQueue2 = new PriorityQueue<>(Collections.reverseOrder()); //음수 담음
+            if(a == b) {
+                if (o1 > o2) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
 
-
+            return a-b; //양수이면 (절댓값)o1>o2 라는 뜻이고, 큰 수의 우선순위가 밀림
+        });//람다식 표현
 
         for(int i=0;i<N;i++)
         {
-           int num = input.nextInt();
+            int num = input.nextInt();
 
-
-
-           if(num == 0)
-           {
-               if(priorityQueue1.peek() == null && priorityQueue2.peek()==null)
-               {
-                   System.out.println(0);
-               } else if (priorityQueue1.peek() != null && priorityQueue2.peek() == null) {
-                   System.out.println(priorityQueue1.poll());
-               } else if (priorityQueue2.peek() != null && priorityQueue1.peek() == null) {
-                   System.out.println(priorityQueue2.poll());
-               } else if (priorityQueue1.peek() == abs(priorityQueue2.peek())) {
-                   System.out.println(priorityQueue2.poll());
-               } else if (priorityQueue1.peek()>abs(priorityQueue2.peek())) {
-                   System.out.println(priorityQueue2.poll());
-               }
-               else {
-                   System.out.println(priorityQueue1.poll());
-               }
-
-           }
-
-           if(num <0)
-           {
-               priorityQueue2.add(num);
-           }
-
-           if(num>0)
-           {
-               priorityQueue1.add(num);
-           }
-
+            if(num ==0&& priorityQueue.isEmpty())
+            {
+                System.out.println(0);
+            } else if (num==0) {
+                System.out.println(priorityQueue.poll());
+            }
+            else
+            {
+                priorityQueue.add(num);
+            }
         }
-
 
     }
 }
