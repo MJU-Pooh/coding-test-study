@@ -1,10 +1,9 @@
+//백준 1427 소트인사이드
 package baekjoon.week1;
 
-
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+public class solve5 {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
@@ -41,8 +40,5 @@ public class Main {
 
 
 
-
-
     }
 }
-
