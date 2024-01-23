@@ -1,11 +1,10 @@
+//백준 2750 수 정렬하기
 package baekjoon.week1;
 
-
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class solve4 {
+
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
@@ -41,7 +40,5 @@ public class Main {
 
 
 
-
     }
 }
-
